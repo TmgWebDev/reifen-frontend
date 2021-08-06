@@ -1,7 +1,11 @@
-import Navbar from "./Navbar";
+import Navbar from "../common/Navbar.jsx";
+import Login from "../common/Login.jsx";
+import Register from "../common/Register.jsx"
 
 const LandingPage = (props) => {
-    return <Navbar/>
+    return <>
+        <Navbar />
+    </>;
 }
 
 export default LandingPage;
