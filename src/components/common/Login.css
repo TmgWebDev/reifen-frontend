@@ -1,0 +1,9 @@
+#register-button{
+    width: auto;
+}
+
+#register-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

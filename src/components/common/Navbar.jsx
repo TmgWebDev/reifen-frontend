@@ -10,7 +10,6 @@ export default function Navbar(props){
             <bs.FormControl type="search" placeholder="Search here"/>
             <bs.Nav className="me-auto">
                 <bs.Nav.Link href="#login">Login</bs.Nav.Link>
-                <bs.Nav.Link href="#register">Register</bs.Nav.Link>
                 <bs.Nav.Link href="#sell">Sell</bs.Nav.Link>
                 <bs.Nav.Link href="#lang" className="lang">
                     English
