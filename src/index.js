@@ -4,10 +4,14 @@ import reportWebVitals from "./reportWebVitals";
 import LandingPage from "./components/LandingPage/LandingPage";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-  
+import "firebase/auth";
+import { AuthProvider } from "./lib/firebase/AuthProvider";
+
 ReactDOM.render(
   <React.StrictMode>
-    <LandingPage />
+    <AuthProvider>
+      <LandingPage />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
