@@ -6,7 +6,6 @@ import { useContext } from 'react';
 import { AuthContext } from '../../lib/firebase/AuthContext';
 
 export default function Register(props){
-    const [modalShow, setModalShow] = useState(false);
 
     const emailRef = useRef(' ');
     const passwordRef = useRef(' ');
@@ -17,7 +16,7 @@ export default function Register(props){
                 emailRef.current.value,
                 passwordRef.current.value
             );
-            setModalShow(false);
+            props.setModalShow(false);
         }
         catch (e){
             console.log(e);
@@ -25,8 +24,7 @@ export default function Register(props){
     }
 
     return <>
-        <input type="button" onClick={() => setModalShow(true)}/>
-        <bs.Modal show={modalShow} onHide={setModalShow}>
+        <bs.Modal show={props.modalShow} onHide={props.setModalShow}>
 
         <bs.Modal.Header closeButton>
             <bs.Modal.Title>Register</bs.Modal.Title>
@@ -48,7 +46,7 @@ export default function Register(props){
         </bs.Modal.Body>
         
         <bs.Modal.Footer>
-            <bs.Button variant="primary" type="submit" onClick={signUp}>
+            <bs.Button variant="dark" type="submit" onClick={signUp}>
                 Register
             </bs.Button>
         </bs.Modal.Footer>
