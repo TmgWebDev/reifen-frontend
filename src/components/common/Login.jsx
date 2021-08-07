@@ -5,11 +5,15 @@ import { useRef } from 'react';
 import { auth } from '../../lib/firebase/config';
 import { useContext } from 'react';
 import { AuthContext } from '../../lib/firebase/AuthContext';
+import Register from './Register.jsx';
 
 
 export default function Login(props){
+
+    const [registerModalShow, setRegisterModalShow] = useState(false);
+
     const user = useContext(AuthContext);
-    const [modalShow, setModalShow] = useState(false);
+    
 
     const emailRef = useRef(' ');
     const passwordRef = useRef(' ');
@@ -20,7 +24,7 @@ export default function Login(props){
                 emailRef.current.value,
                 passwordRef.current.value
             );
-            setModalShow(false);
+            props.setModalShow(false);
         }
         catch (e){
             console.log(e);
@@ -29,8 +33,9 @@ export default function Login(props){
 
 
     return <>
-        <input type="button" onClick={() => setModalShow(true)}/>
-        <bs.Modal show={modalShow} onHide={setModalShow}>
+        <Register modalShow={registerModalShow} setModalShow={(v) => setRegisterModalShow(v)}/>
+
+        <bs.Modal show={props.modalShow} onHide={props.setModalShow}>
 
         <bs.Modal.Header closeButton>
             <bs.Modal.Title>Login</bs.Modal.Title>
@@ -53,7 +58,7 @@ export default function Login(props){
                     Don't have an account?
                 </bs.Form.Text>
                 <div id="register-row">
-                    <bs.Nav.Link href="#register" id="register-button">
+                    <bs.Nav.Link href="#register" id="register-button" onClick={() => {props.setModalShow(false);setRegisterModalShow(true);}}>
                         Register
                     </bs.Nav.Link>  
                 </div>
@@ -61,7 +66,7 @@ export default function Login(props){
         </bs.Modal.Body>
         
         <bs.Modal.Footer>
-            <bs.Button variant="primary" type="submit" onClick={signIn}>
+            <bs.Button variant="dark" type="submit" onClick={signIn}>
                 Login
             </bs.Button>
         </bs.Modal.Footer>
