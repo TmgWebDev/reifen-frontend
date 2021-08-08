@@ -11,7 +11,8 @@ import Register from './Register.jsx';
 export default function Login(props){
 
     const [registerModalShow, setRegisterModalShow] = useState(false);
-
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertContent, setAlertContent] = useState(' ');
     const user = useContext(AuthContext);
     
 
@@ -24,18 +25,43 @@ export default function Login(props){
                 emailRef.current.value,
                 passwordRef.current.value
             );
+            setShowAlert(false);
             props.setModalShow(false);
         }
         catch (e){
-            console.log(e);
+            switch(e.code) {
+                case 'auth/user-not-found':
+                    setAlertContent('User not found');
+                    break;
+                case 'auth/user-disabled':
+                    setAlertContent('User not found');
+                    break;
+                case 'auth/invalid-email':
+                    setAlertContent('Invalid Email');
+                    break;
+                case 'auth/wrong-password':
+                    setAlertContent('Wrong email/password');
+                    break;
+                default:
+                    setAlertContent('Error');
+            }
+            setShowAlert(true);
         }
     }
 
+    const handleEmailChange = (e) => {
+        setShowAlert(false);
+    }
+
+    const handleLoginModalHide = (e) => {
+        props.setModalShow(false);
+        setShowAlert(false);
+    }
 
     return <>
         <Register modalShow={registerModalShow} setModalShow={(v) => setRegisterModalShow(v)}/>
 
-        <bs.Modal show={props.modalShow} onHide={props.setModalShow}>
+        <bs.Modal show={props.modalShow} onHide={handleLoginModalHide}>
 
         <bs.Modal.Header closeButton>
             <bs.Modal.Title>Login</bs.Modal.Title>
@@ -45,7 +71,7 @@ export default function Login(props){
             <bs.Form>
                 <bs.Form.Group className="mb-3" controlId="formEmail">
                     <bs.Form.Label>Email</bs.Form.Label>
-                    <bs.Form.Control ref={emailRef} type="email" placeholder="email@example.com" />
+                    <bs.Form.Control ref={emailRef} type="email" placeholder="email@example.com" onChange={handleEmailChange}/>
                 </bs.Form.Group>
 
                 <bs.Form.Group className="mb-3" controlId="formPassword">
@@ -54,7 +80,8 @@ export default function Login(props){
                 </bs.Form.Group>
             </bs.Form>
             <bs.Form.Group className="text-center">
-                <bs.Form.Text>
+                {showAlert && <bs.Alert variant='danger'>{alertContent}</bs.Alert>}
+                <bs.Form.Text id="error" className="m-auto">
                     Don't have an account?
                 </bs.Form.Text>
                 <div id="register-row">

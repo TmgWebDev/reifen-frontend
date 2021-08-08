@@ -12,7 +12,7 @@ export default function Navbar(props){
     <Login modalShow={loginModalShow} setModalShow={(v) => setLoginModalShow(v)}/>
     <bs.Navbar variant='dark' bg='dark'>
         <bs.Container>
-            <bs.Navbar.Brand href="#" c>Reifen Kleinanzeigen</bs.Navbar.Brand>
+            <bs.Navbar.Brand href="#">Reifen Kleinanzeigen</bs.Navbar.Brand>
             <bs.FormControl type="search" placeholder="Search here"/>
             <bs.Nav className="me-auto">
                 <bs.Nav.Link href="#" onClick={() => setLoginModalShow(true)}>Login</bs.Nav.Link>
