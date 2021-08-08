@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import Input from '@material-ui/core/Input';
-import VolumeUp from '@material-ui/icons/VolumeUp';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import Input from "@material-ui/core/Input";
+import VolumeUp from "@material-ui/icons/VolumeUp";
 
 const useStyles = makeStyles({
   root: {
@@ -17,14 +17,14 @@ const useStyles = makeStyles({
 
 export default function InputSlider(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(1);
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
   };
 
   const handleBlur = () => {
@@ -41,11 +41,10 @@ export default function InputSlider(props) {
         Quantity
       </Typography>
       <Grid container spacing={2} alignItems="center">
-        
         <Grid item xs>
-          <Slider  
-            max = {props.item.quantity}
-            value={typeof value === 'number' ? value : 0}
+          <Slider
+            max={props.item.quantity}
+            value={typeof value === "number" ? value : 0}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
           />
@@ -59,10 +58,10 @@ export default function InputSlider(props) {
             onBlur={handleBlur}
             inputProps={{
               step: 1,
-              min: 0,
-              max: 50,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
+              min: 1,
+              max: (props.item.quantity),
+              type: "number",
+              "aria-labelledby": "input-slider",
             }}
           />
         </Grid>
