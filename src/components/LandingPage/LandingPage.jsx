@@ -10,4 +10,4 @@ const LandingPage = (props) => {
     </>;
 }
 
-export default LandingPage;
+export default LandingPage; 
