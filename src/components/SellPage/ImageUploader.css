@@ -1,0 +1,53 @@
+.image-align{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dv-amk {
+    justify-content:space-between;
+}
+
+.btn-hm {
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 25px;
+    margin-top: 5px;
+}
+
+.img-item{
+    object-fit:contain;
+    width: 150px;
+    height: 150px;
+}
+
+.btn-rmv:hover {
+    background-color: rgb(252, 122, 144);
+}
+
+.btn-zbr:hover {
+    background-color: rgb(252, 122, 144);
+}
+
+.btn-hm:hover {
+    background-color: gray;
+}
+
+.btn-rmv {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 25px;
+    margin-top: 5px;
+}
+
+.btn-zbr{
+    background: red;
+    color: white;
+    border: none;
+    margin-top: 4px;
+}
